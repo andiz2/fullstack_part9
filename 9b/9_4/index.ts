@@ -3,11 +3,11 @@ import calculateExercises from './exerciseCalculator';
 import express from 'express';
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 
 app.get("/hello", (_req, res) =>{
-    res.send("Hello Full Stack!")
+    res.send("Hello Full Stack!");
 });
 
 app.get('/bmi', (req, res) => {
@@ -15,7 +15,7 @@ app.get('/bmi', (req, res) => {
     if (!Number(weight) || !Number(height)){
         res.status(400).send(
             {error:'Malformed params'}
-        )
+        );
     }
 
         res.send(
@@ -27,23 +27,24 @@ app.get('/bmi', (req, res) => {
                     Number(weight), 
                     Number(height)
                 ))
-        }))
+        }));
 });
 
 app.post('/exercises', (req, res) => {
     try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
         const { daily_exercises, target } = req.body;
 
         if (!daily_exercises || !target) {
             throw new Error('Params missing');
         }
-
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, , @typescript-eslint/no-unsafe-assignment
         daily_exercises.forEach((exercise: any) => {
             if (exercise === null || exercise === undefined || isNaN(Number(exercise))) {
                 throw new Error('Malformed params');
             }
         });
-
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
         const result = calculateExercises(daily_exercises, target);
 
         res.json({result});

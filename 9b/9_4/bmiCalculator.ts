@@ -1,5 +1,5 @@
 const bmiCalc = (weight: number, height: number): string => {
-    let bmi: number = weight / ((height/100)*(height/100));
+    const bmi: number = weight / ((height/100)*(height/100));
     switch (true){
         case bmi < 19:
             return 'Small range';
@@ -17,11 +17,11 @@ const bmiCalc = (weight: number, height: number): string => {
            return 'Invalid BMI';
             //break;
     }
-}
+};
 
-const a: number = Number(process.argv[2])
-const b: number = Number(process.argv[3])
-bmiCalc(a, b)
+const a: number = Number(process.argv[2]);
+const b: number = Number(process.argv[3]);
+bmiCalc(a, b);
 //console.log(bmiCalc(78, 180))
 
 export default bmiCalc;

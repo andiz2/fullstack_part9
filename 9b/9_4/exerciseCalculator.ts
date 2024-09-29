@@ -9,7 +9,7 @@ interface ExerciseResp {
 }
 
 const calculateExercises = (args: number[], target: number): ExerciseResp => {
-    let periodLength = Number(args.length);
+    const periodLength = Number(args.length);
     let trainNr = 0;
     let dailyMedTime = 0;
     let sum = 0;
@@ -40,18 +40,16 @@ const calculateExercises = (args: number[], target: number): ExerciseResp => {
         target: target,
         average: dailyMedTime   
     };
-}
+};
 
 // (Math.round(num * 100) / 100).toFixed(2);
 
-console.log(process.argv)
-console.log('length ', process.argv.length)
-let arr: number[] = [];
+const arr: number[] = [];
 for (let i = 3; i < process.argv.length; i++) {
-    arr.push(Number(process.argv[i]))  
+    arr.push(Number(process.argv[i]));  
 }
 
-let target = Number(process.argv[2])
+const target = Number(process.argv[2]);
 
 calculateExercises(arr, target);
 
