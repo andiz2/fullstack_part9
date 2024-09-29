@@ -7,22 +7,23 @@ app.get("/hello", (_req, res) =>{
 });
 
 app.get('/bmi', (req, res) => {
-   if (!Number(req.query.weight) || !Number(req.query.height)){
-    res.status(400).send(
-        {error:'Malformed params'}
-    )
-   }
+    const {weight, height} = req.query;
+    if (!Number(weight) || !Number(height)){
+        res.status(400).send(
+            {error:'Malformed params'}
+        )
+    }
 
-    res.send(
-        JSON.stringify(
-        {
-            weight: Number(req.query.weight),
-            height: Number(req.query.height),
-            bmi: String(bmiCalc(
-                Number(req.query.weight), 
-                Number(req.query.height)
-            ))
-    }))
+        res.send(
+            JSON.stringify(
+            {
+                weight: Number(weight),
+                height: Number(height),
+                bmi: String(bmiCalc(
+                    Number(weight), 
+                    Number(height)
+                ))
+        }))
 });
 
 
