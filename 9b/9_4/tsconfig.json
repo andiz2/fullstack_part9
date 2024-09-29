@@ -11,5 +11,8 @@
       "alwaysStrict": true,
       "esModuleInterop": true,
       "declaration": true,
+      "typeRoots": ["./node_modules/@types"],
+      "types": ["node", "express"],
+      "module": "commonjs",
     }
   }
