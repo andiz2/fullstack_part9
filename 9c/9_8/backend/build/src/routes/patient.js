@@ -9,7 +9,9 @@ const router = express_1.default.Router();
 router.get('/', (_req, res) => {
     res.send(patientService_1.default.getNonSensitiveEntries());
 });
-router.post('/', (_req, res) => {
-    res.send('Saving a patient!');
+router.post('/', (req, res) => {
+    const { name, dateOfBirth, gender, occupation, ssn } = req.body;
+    const addEntry = patientService_1.default.addPatient(name, dateOfBirth, gender, occupation, ssn);
+    res.json(addEntry);
 });
 exports.default = router;
