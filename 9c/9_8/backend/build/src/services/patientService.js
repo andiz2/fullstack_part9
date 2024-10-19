@@ -17,21 +17,19 @@ const getNonSensitiveEntries = () => {
         occupation,
     }));
 };
-const addPatient = (name, dateOfBirth, gender, ssn, occupation) => {
+const findById = (id) => {
+    const entry = patients_1.default.find(p => p.id === id);
+    return entry;
+};
+const addPatient = (entry) => {
     const id = (0, uuid_1.v1)();
-    const newPatientEntry = {
-        id: id,
-        name,
-        dateOfBirth,
-        gender,
-        ssn,
-        occupation,
-    };
+    const newPatientEntry = Object.assign({ id: id }, entry);
     patients_1.default.push(newPatientEntry);
     return newPatientEntry;
 };
 exports.default = {
     getEntries,
     getNonSensitiveEntries,
-    addPatient
+    addPatient,
+    findById
 };
