@@ -1,5 +1,7 @@
 import { NewPatientEntry, Gender } from "./types";
+import {z} from 'zod';
 
+/*
 const isString = (text: unknown): text is string => {
     return typeof text === 'string' || text instanceof String;
 };
@@ -46,6 +48,7 @@ const parseOccupation = (occupation: unknown): string => {
     }
     return occupation;
 }
+    */
 
 export const toNewPatientEntry = (object: unknown): NewPatientEntry => {
     if( !object || typeof object !== 'object') {
@@ -54,11 +57,11 @@ export const toNewPatientEntry = (object: unknown): NewPatientEntry => {
 
     if('name' in object && 'dateOfBirth' in object && 'gender' in object && 'occupation' in object && 'ssn' in object) {
         const newEntry: NewPatientEntry = {
-            name: parseName(object.name),
-            dateOfBirth: parseDateOfBirth(object.dateOfBirth),
-            gender: parseGender(object.gender),
-            occupation: parseOccupation(object.occupation),
-            ssn: parseSsn(object.ssn)
+            name: z.string().parse(object.name),
+            dateOfBirth: z.string().date().parse(object.dateOfBirth),
+            gender: z.nativeEnum(Gender).parse(object.gender), //parseGender(object.gender),
+            occupation: z.string().parse(object.occupation), //parseOccupation(object.occupation),
+            ssn: z.string().parse(object.ssn) //parseSsn(object.ssn)
         };
         return newEntry;
     }
