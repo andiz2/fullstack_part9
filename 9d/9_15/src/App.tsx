@@ -7,6 +7,10 @@ interface HeaderProps {
     name: String;
     exerciseCount: number;
   }
+
+  interface ContentArr{
+    content: Content[];
+  }
   
   interface Total{
     total: number;
@@ -16,9 +20,17 @@ interface HeaderProps {
     return <h1>{props.name}</h1>;
   }
   
-  const Content = (props: Content) => {
-    return <p>{props.name} {props.exerciseCount} </p>;
-  }
+  const ContentArr = (props: ContentArr) => {
+    return (
+    <div>
+        {props.content.map((part) => (
+            <p>
+                {part.name} {part.exerciseCount}
+            </p>
+        ))}
+        
+    </div>
+  )};
   
   const Total = (props: Total) => {
     return <p>Number of total exercises {props.total}</p>;
@@ -46,9 +58,8 @@ interface HeaderProps {
     return (
       <div>
          <Header name={courseName} />
-         <Content name = {courseParts[0].name} exerciseCount = {courseParts[0].exerciseCount} />
-         <Content name = {courseParts[1].name} exerciseCount = {courseParts[1].exerciseCount} />
-         <Content name = {courseParts[2].name} exerciseCount = {courseParts[2].exerciseCount} />
+         <ContentArr content = {courseParts}
+         />
          <Total  total = {totalExercises}/>
       </div>
     );
