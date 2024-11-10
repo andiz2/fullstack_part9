@@ -1,4 +1,4 @@
-
+/*
 interface HeaderProps {
   name: String;
 }
@@ -62,4 +62,4 @@ const App2 = () => {
   );
 };
 
-export default App2;
+export default App2;*/
