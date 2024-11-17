@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { DiaryEntry } from "./types.tsx";
 import axios from 'axios';
-import Diary from "./component/Diary.tsx";
-
+import DiaryList from "./component/DiaryList.tsx";
 
 const App = () => {
     const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
@@ -18,11 +17,7 @@ const App = () => {
 
     return (
         <div>
-            <ul>
-                {diaries.map(diary =>
-                  <Diary {...diary} />
-                )}
-            </ul>
+          <DiaryList diaryList = {diaries}/>
         </div>
     )
 }
