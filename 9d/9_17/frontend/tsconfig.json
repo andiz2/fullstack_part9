@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "Node16",  // Set module to Node16
+    "moduleResolution": "node16",  // Set moduleResolution to node16
+    "jsx": "react",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "./dist"
+  }
+}
