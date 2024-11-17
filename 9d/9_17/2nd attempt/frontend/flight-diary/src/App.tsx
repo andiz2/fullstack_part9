@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { DiaryEntry } from "./types.tsx";
 import axios from 'axios';
+import Diary from "./component/Diary.tsx";
 
 
 const App = () => {
@@ -19,12 +20,7 @@ const App = () => {
         <div>
             <ul>
                 {diaries.map(diary =>
-                    <li key = {diary.id}>
-                      <h3>{diary.date}</h3>
-                      <p>visibility: {diary.visibility}</p>
-                      <p>weather: {diary.weather}</p>
-                      
-                    </li>
+                  <Diary {...diary} />
                 )}
             </ul>
         </div>
