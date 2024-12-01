@@ -1,6 +1,6 @@
 export enum Weather {
     Sunny = 'sunny',
-    Raini = 'rainy',
+    Rainy = 'rainy',
     Cloudy = 'cloudy',
     Stormy = 'stormy',
     Windy = 'windy',
